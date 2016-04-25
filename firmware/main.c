@@ -1,6 +1,7 @@
 /*
  * Copyright 2011 Mika Tuupola
  * Copyright 2016 Damjan Georgievski
+ * Copyright 2016 Aleksandar Lazarov
  *
  */
 
@@ -34,7 +35,7 @@ int main(void) {
     stdin  = &uart_input;
     sei();
 
-    puts("Hello world!");
+    puts("Hello world!\r");
 
     int input;
     while (1) {
