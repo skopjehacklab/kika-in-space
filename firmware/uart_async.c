@@ -51,10 +51,11 @@ void uart_init(void) {
 }
 
 int uart_putchar(char c, FILE *stream) {
+/*
     if (c == '\n') {
         uart_putchar('\r', stream);
     }
-
+*/
     int write_pointer = (tx_buffer.end + 1) % UART_TX_BUFFER_SIZE;
 
     if (write_pointer != tx_buffer.start){
