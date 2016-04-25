@@ -18,13 +18,13 @@
 #endif
 
 struct tx_ring {
-    int buffer[UART_TX_BUFFER_SIZE];
+    char buffer[UART_TX_BUFFER_SIZE];
     int start;
     int end;
 };
 
 struct rx_ring {
-    int buffer[UART_RX_BUFFER_SIZE];
+    char buffer[UART_RX_BUFFER_SIZE];
     int start;
     int end;
 };
