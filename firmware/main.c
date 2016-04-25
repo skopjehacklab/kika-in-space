@@ -1,47 +1,58 @@
 /*
- * Test how to use uart stuff as an outside library. Redirects stdout
- * to uart.
- *
- * Led at Arduino digital 13 (PORTB5). Cause we all love blinken leds!
- *
- * To compile and upload run: make clean; make; make program;
- * Connect to serial with: screen /dev/tty.usbserial-* 9600
- *
  * Copyright 2011 Mika Tuupola
- *
- * Licensed under the MIT license:
- *   http://www.opensource.org/licenses/mit-license.php
+ * Copyright 2016 Damjan Georgievski
  *
  */
-
-#ifndef F_CPU
-#define F_CPU 16000000UL
-#endif
 
 //#include <stdlib.h>
 #include <avr/io.h>
 #include <avr/interrupt.h>
 #include <stdio.h>
-#include <util/delay.h>
 
 #include "uart.h"
 
-int main(void) {
+volatile uint32_t millis;
 
+void io_ports_init(void) {
+    DDRB = _BV(PORTB5);                    // set PORTB5 to an output
+}
+
+ISR(TIMER0_OVF_vect) {                     // Interrupt service routine
+    millis++;
+    TCNT0 = 256 - 62;
+}
+
+void millis_init(void) {
+    TCCR0B |= (1 << CS02);                 // 256 prescaler ~ 62.5Khz / 16µs
+    TIMSK0 |= (1 << TOIE0);                // overflow interrupt enabled
+    TCNT0 = 256 - 62;                      // overflow after 62 * 16µs ~ 0.000992 s
+    millis = 0;
+}
+
+void blink_periodically(void) {
+    static uint32_t prev_millis;
+    if (millis - prev_millis >= 500) {
+        prev_millis = millis;
+        PORTB ^= _BV(PORTB5);              // toggle portb5
+    }
+}
+
+int main(void) {
+    cli();
+    millis_init();
+    io_ports_init();
     uart_init();
-    sei();
     stdout = &uart_output;
     stdin  = &uart_input;
+    sei();
 
+    puts("Hello world!");
+
+    char input;
     while (1) {
-        /* Blink led by toggling state of PORTB5 (Arduino digital 13). */
-        PORTB ^= _BV(PORTB5);
+        blink_periodically();
 
-        puts("Hello async world!");
-
-        _delay_ms(500);
     }
 
     return 0;
-
 }
