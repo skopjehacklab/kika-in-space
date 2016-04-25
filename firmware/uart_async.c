@@ -71,9 +71,9 @@ int uart_getchar(FILE *stream) {
         return EOF;
     }
 
-    int read_pointer = (rx_buffer.start + 1) % UART_RX_BUFFER_SIZE;
+    int read_pointer = rx_buffer.start;
 
-    rx_buffer.start = read_pointer;
+    rx_buffer.start = (rx_buffer.start + 1) % UART_RX_BUFFER_SIZE;
     return rx_buffer.buffer[read_pointer];
 }
 
