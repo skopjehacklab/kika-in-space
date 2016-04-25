@@ -10,29 +10,17 @@
 #include <stdio.h>
 
 #include "uart.h"
-
-volatile uint32_t millis;
+#include "millis.h"
 
 void io_ports_init(void) {
     DDRB = _BV(PORTB5);                    // set PORTB5 to an output
 }
 
-ISR(TIMER0_OVF_vect) {                     // Interrupt service routine
-    millis++;
-    TCNT0 = 256 - 62;
-}
-
-void millis_init(void) {
-    TCCR0B |= (1 << CS02);                 // 256 prescaler ~ 62.5Khz / 16µs
-    TIMSK0 |= (1 << TOIE0);                // overflow interrupt enabled
-    TCNT0 = 256 - 62;                      // overflow after 62 * 16µs ~ 0.000992 s
-    millis = 0;
-}
-
 void blink_periodically(void) {
     static uint32_t prev_millis;
-    if (millis - prev_millis >= 500) {
-        prev_millis = millis;
+    uint32_t now = millis();
+    if (now - prev_millis >= 500) {
+        prev_millis = now;
         PORTB ^= _BV(PORTB5);              // toggle portb5
     }
 }
