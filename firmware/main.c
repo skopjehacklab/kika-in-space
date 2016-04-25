@@ -48,7 +48,7 @@ int main(void) {
 
     puts("Hello world!");
 
-    char input;
+    int input;
     while (1) {
         blink_periodically();
 
