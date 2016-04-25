@@ -91,12 +91,10 @@ ISR(USART_RX_vect) {
 }
 
 ISR(USART_UDRE_vect){
-    int read_pointer = (tx_buffer.start + 1) % UART_TX_BUFFER_SIZE;
-
     /* Transmit next byte if data available in ringbuffer. */
-    if (read_pointer != tx_buffer.end) {
-        UDR0 = tx_buffer.buffer[read_pointer];
-        tx_buffer.start = read_pointer;
+    if (tx_buffer.start != tx_buffer.end) {
+        UDR0 = tx_buffer.buffer[tx_buffer.start];
+        tx_buffer.start = (tx_buffer.start + 1) % UART_TX_BUFFER_SIZE;
     } else {
         /* Nothing to send. Disable the transmit interrupt for serial port 0. */
         UCSR0B &= ~_BV(UDRIE0);
