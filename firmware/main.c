@@ -52,6 +52,11 @@ int main(void) {
     while (1) {
         blink_periodically();
 
+        // send what's received - rx is from the gps module, tx goes to the TX1 module
+        input = getchar();
+        if (input != EOF) {
+            putchar(input);
+        }
     }
 
     return 0;
