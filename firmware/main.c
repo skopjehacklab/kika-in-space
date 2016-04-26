@@ -39,7 +39,7 @@ int main(void) {
         uint32_t now = millis();
         blink_periodically(now);
 
-        // send what's received - rx is from the gps module, tx goes to the TX1 module
+        // send what's received - rx is from the gps module, tx goes to the modem and radio module
         int input = getchar();
         if (input != EOF) {
             putchar(input);
