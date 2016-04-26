@@ -33,3 +33,11 @@
 
 # Backup files generated from KiCAD
 *.bak
+
+# avr-gcc artefacts
+*.eep
+*.lss
+*.lst
+*.map
+*.sym
+firmware/.dep/
