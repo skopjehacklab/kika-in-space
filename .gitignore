@@ -33,6 +33,7 @@
 
 # Backup files generated from KiCAD
 *.bak
+*.kicad_pcb-bak
 
 # avr-gcc artefacts
 *.eep
