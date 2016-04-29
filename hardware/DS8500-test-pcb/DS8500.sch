@@ -120,6 +120,7 @@ LIBS:opamps
 LIBS:conn_mics
 LIBS:conn_16_mirror
 LIBS:conn_16
+LIBS:DS8500-cache
 EELAYER 25 0
 EELAYER END
 $Descr A4 11693 8268
@@ -675,7 +676,7 @@ Wire Wire Line
 Wire Wire Line
 	3550 3300 5400 3300
 Wire Wire Line
-	3650 3300 3650 3450
+	3650 3200 3650 3450
 Wire Wire Line
 	4200 3750 4200 3700
 Wire Wire Line
@@ -748,4 +749,39 @@ Wire Wire Line
 Wire Wire Line
 	7050 4050 7050 4100
 Connection ~ 6800 4050
+$Comp
+L TEST_1P W3
+U 1 1 572345F3
+P 3650 3200
+F 0 "W3" H 3650 3470 50  0000 C CNN
+F 1 "FSK_IN" H 3650 3400 50  0000 C CNN
+F 2 "Pin_Headers:Pin_Header_Straight_1x01" H 3850 3200 50  0001 C CNN
+F 3 "" H 3850 3200 50  0000 C CNN
+	1    3650 3200
+	1    0    0    -1  
+$EndComp
+$Comp
+L TEST_1P W4
+U 1 1 57234BE3
+P 3650 4350
+F 0 "W4" H 3650 4620 50  0000 C CNN
+F 1 "GND" H 3650 4550 50  0000 C CNN
+F 2 "Pin_Headers:Pin_Header_Straight_1x01" H 3850 4350 50  0001 C CNN
+F 3 "" H 3850 4350 50  0000 C CNN
+	1    3650 4350
+	1    0    0    -1  
+$EndComp
+$Comp
+L GND #PWR019
+U 1 1 57234C50
+P 3650 4450
+F 0 "#PWR019" H 3650 4200 50  0001 C CNN
+F 1 "GND" H 3650 4300 50  0000 C CNN
+F 2 "" H 3650 4450 50  0000 C CNN
+F 3 "" H 3650 4450 50  0000 C CNN
+	1    3650 4450
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	3650 4450 3650 4350
 $EndSCHEMATC
