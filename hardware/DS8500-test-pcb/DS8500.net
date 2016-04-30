@@ -1,7 +1,7 @@
 (export (version D)
   (design
     (source /home/aleks/work/kika-in-space/hardware/DS8500-test-pcb/DS8500.sch)
-    (date "пет, 29 апр 2016 23:03:43 CEST")
+    (date "саб, 30 апр 2016 20:17:18 CEST")
     (tool "Eeschema 4.0.2-stable")
     (sheet (number 1) (name /) (tstamps /)
       (title_block
@@ -17,7 +17,7 @@
   (components
     (comp (ref U2)
       (value DS8500)
-      (footprint w_smd_qfn:qfn-20)
+      (footprint Housings_DFN_QFN:QFN-20-1EP_5x5mm_Pitch0.65mm)
       (libsource (lib max) (part DS8500))
       (sheetpath (names /) (tstamps /))
       (tstamp 571F7B08))
