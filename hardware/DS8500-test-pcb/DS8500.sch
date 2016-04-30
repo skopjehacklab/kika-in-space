@@ -557,17 +557,6 @@ F 3 "" H 2900 3450 50  0000 C CNN
 	1    2900 3450
 	-1   0    0    1   
 $EndComp
-$Comp
-L R_Small R1
-U 1 1 5723DA3F
-P 4650 3400
-F 0 "R1" H 4680 3420 50  0000 L CNN
-F 1 "0" H 4680 3360 50  0000 L CNN
-F 2 "w_smd_resistors:r_0805" H 4650 3400 50  0001 C CNN
-F 3 "" H 4650 3400 50  0000 C CNN
-	1    4650 3400
-	0    -1   -1   0   
-$EndComp
 Wire Wire Line
 	5950 4400 5950 4600
 Wire Wire Line
@@ -714,7 +703,5 @@ Wire Wire Line
 	5300 3300 5300 2950
 Connection ~ 5300 2950
 Wire Wire Line
-	4100 3400 4550 3400
-Wire Wire Line
-	4750 3400 5400 3400
+	4100 3400 5400 3400
 $EndSCHEMATC
