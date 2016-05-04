@@ -136,5 +136,5 @@ Comment3 ""
 Comment4 ""
 $EndDescr
 Text Notes 650  2000 0    60   ~ 12
-Requirement:\nThe input to the HX1 module need a swing from 0 to 5V\nin order to achive the ±5kHz deviation (typical specs\nfrom the datasheet).\n\nProblem:\nThe output of the DS8500 is 500mVpp (typ) with a 1.5V\nof DC offset. The maximum load at the ouput is 30kOHM\n(by specs in the datasheet). This needs to be analogly\nprocessed in order to fit the signal level required by the\nHX1 module\n\nSolution:\nDo some analog processing!
+Requirement:\nThe input to the HX1 module needs a swing from 0 to 5V\nin order to achive the ±5kHz deviation (typical specs\nfrom the datasheet).\n\nProblem:\nThe output of the DS8500 is 500mVpp (typ) with a 1.5V\nof DC offset. The maximum load at the ouput is 30kOHM\n(by specs in the datasheet). This needs to be analogly\nprocessed in order to fit the signal level required by the\nHX1 module\n\nSolution:\nDo some analog processing!
 $EndSCHEMATC
